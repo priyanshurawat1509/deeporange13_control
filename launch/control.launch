@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <rosparam command="load" file="$(find warthog_control)/config/control.yaml" />
+  <arg name="name" default="warthog"/>
+  <arg name="sim" />
+
+  <node if="$(arg sim)" name="controller_spawner" pkg="controller_manager" type="spawner"
+        args="--timeout 1200 warthog_joint_publisher warthog_velocity_controller" />
+
+  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <rosparam command="load" file="$(find warthog_control)/config/twist_mux.yaml" />
+    <remap from="cmd_vel_out" to="warthog_velocity_controller/cmd_vel"/>
+  </node>
+
+</launch>

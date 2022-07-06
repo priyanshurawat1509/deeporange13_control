@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package>
+  <name>deeporange13_control</name>
+  <version>0.1.1</version>
+  <description>Controls Interface for DO13</description>
+  <maintainer email="paredis@clemson.edu">Chris Paredis</maintainer>
+  <author email="prakhag@clemson.edu">Prakhar Gupta</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>roslaunch</build_depend>
+  <build_depend>can_dbc_parser</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_runtime</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>deeporange13_msgs</build_depend>
+
+  <run_depend>controller_manager</run_depend>
+  <run_depend>interactive_marker_twist_server</run_depend>
+  <run_depend>diff_drive_controller</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>joy</run_depend>
+  <run_depend>robot_localization</run_depend>
+  <run_depend>teleop_twist_joy</run_depend>
+  <run_depend>topic_tools</run_depend>
+  <run_depend>twist_mux</run_depend>
+
+  <run_depend>can_dbc_parser</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>deeporange13_msgs</run_depend>
+
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,90 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ROS RAPTOR INV1 INV2 INV3 INV4 INV5 INV6
+
+
+BO_ 901 VehicleState_Supervisor_msg: 8 RAPTOR
+ SG_ Sys_State : 0|8@1+ (1,0) [0|255] "-" Vector__XXX
+
+BO_ 902 ROS_Supervisor_msgs: 8 ROS
+ SG_ Au_State : 0|8@1+ (1,0) [0|255] "-" Vector__XXX
+ SG_ ROS_Health : 8|1@1+ (1,0) [0|255] "-" Vector__XXX
+
+BO_ 903 ROS_Control_msgs: 8 ROS
+ SG_ Left_TrackTrq_Demand : 0|16@1- (1,0) [-32768|32767] "N-m" Vector__XXX
+ SG_ Right_TrackTrq_Demand : 16|16@1- (1,0) [-32768|32767] "N-m" Vector__XXX
+ SG_ Left_TrackVel_Demand : 32|16@1- (1,0) [-32768|32767] "rad/s" Vector__XXX
+ SG_ Right_TrackVel_Demand : 48|16@1- (1,0) [-32768|32767] "rad/s" Vector__XXX
+
+BO_ 105 M165_Motor_Position_Info_i1: 8 INV1
+ SG_ D4_Delta_Resolver_Filtered : 48|16@1- (0.1,0) [-3276.8|3276.7] "deg" Vector__XXX
+ SG_ D3_Electrical_Output_Frequency : 32|16@1- (0.1,0) [-3276.8|3276.7] "hz" Vector__XXX
+ SG_ D2_Motor_Speed : 16|16@1- (1,0) [-32768|32767] "rpm" Vector__XXX
+ SG_ D1_Motor_Angle_Electrical : 0|16@1+ (0.1,0) [0|6553.5] "deg" Vector__XXX
+
+BO_ 205 M165_Motor_Position_Info_i2: 8 INV2
+ SG_ D4_Delta_Resolver_Filtered : 48|16@1- (0.1,0) [-3276.8|3276.7] "deg" Vector__XXX
+ SG_ D3_Electrical_Output_Frequency : 32|16@1- (0.1,0) [-3276.8|3276.7] "hz" Vector__XXX
+ SG_ D2_Motor_Speed : 16|16@1- (1,0) [-32768|32767] "rpm" Vector__XXX
+ SG_ D1_Motor_Angle_Electrical : 0|16@1+ (0.1,0) [0|6553.5] "deg" Vector__XXX
+
+BO_ 305 M165_Motor_Position_Info_i3: 8 INV3
+ SG_ D4_Delta_Resolver_Filtered : 48|16@1- (0.1,0) [-3276.8|3276.7] "deg" Vector__XXX
+ SG_ D3_Electrical_Output_Frequency : 32|16@1- (0.1,0) [-3276.8|3276.7] "hz" Vector__XXX
+ SG_ D2_Motor_Speed : 16|16@1- (1,0) [-32768|32767] "rpm" Vector__XXX
+ SG_ D1_Motor_Angle_Electrical : 0|16@1+ (0.1,0) [0|6553.5] "deg" Vector__XXX
+
+BO_ 405 M165_Motor_Position_Info_i4: 8 INV4
+ SG_ D4_Delta_Resolver_Filtered : 48|16@1- (0.1,0) [-3276.8|3276.7] "deg" Vector__XXX
+ SG_ D3_Electrical_Output_Frequency : 32|16@1- (0.1,0) [-3276.8|3276.7] "hz" Vector__XXX
+ SG_ D2_Motor_Speed : 16|16@1- (1,0) [-32768|32767] "rpm" Vector__XXX
+ SG_ D1_Motor_Angle_Electrical : 0|16@1+ (0.1,0) [0|6553.5] "deg" Vector__XXX
+
+
+
+CM_ BU_ INV1 "The Cascadia Motion inverter";
+CM_ BO_ 901 "State information and semaphores from Raptor's Vehicle State Supervisor";
+CM_ BO_ 902 "State Machine msgs from DBW Supervisor";
+CM_ BO_ 903 "Mobility commands form ROS (Phoenix Stack). Either Torque or Velocity commands to be used. Both of them should never be utilised together. They are choices.";
+CM_ SG_ 903 Left_TrackTrq_Demand "The torque required at the left track";
+CM_ SG_ 903 Right_TrackTrq_Demand "The torque required at the right track";
+CM_ SG_ 903 Left_TrackVel_Demand "The angular velocity required at the left track";
+CM_ SG_ 903 Right_TrackVel_Demand "The angular velocity required at the right track";
+CM_ SG_ 105 D4_Delta_Resolver_Filtered "Used in calibration of resolver angle adjustment.";
+CM_ SG_ 105 D3_Electrical_Output_Frequency "The actual electrical frequency of the inverter";
+CM_ SG_ 105 D2_Motor_Speed "The measured speed of the motor";
+CM_ SG_ 105 D1_Motor_Angle_Electrical "The Electrical Angle of the motor as read by the encoder or resolver";
+
