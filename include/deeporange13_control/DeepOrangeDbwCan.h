@@ -68,7 +68,7 @@ namespace deeporange_dbw_ros
 
         // dbc file variables
         NewEagle::Dbc dbwDbc_;
-        std::string dbcFile_ = "/dbc/ROS_DO13.dbc";
+        std::string dbcFile_;
 
         // Raptor Comms Variables
         int sysState_;
