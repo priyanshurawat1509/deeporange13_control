@@ -9,6 +9,8 @@ functions to split velocity to left and right track velocities
 #include <ros/ros.h>
 #include <can_msgs/Frame.h>
 #include <geometry_msgs/TwistStamped.h>
+#include <deeporange13_msgs/TrackVelocity.h>
+
 
 namespace deeporange_dbw_ros
 {
@@ -17,14 +19,16 @@ namespace deeporange_dbw_ros
         public:
         VehicleModel(ros::NodeHandle &node, ros::NodeHandle &priv_nh);
         ~VehicleModel();
-
+        
         private:
-        void recvTwist(const geometry_msgs::TwistStamped::ConstPtr& msg);
-
-        ros::Timer timer_;
-
+        void cmdVel2trackVel(const geometry_msgs::TwistStamped::ConstPtr& msg);
         ros::Subscriber sub_cmdVel_;
         ros::Publisher pub_trackVel_;
+
+        deeporange13_msgs::TrackVelocity trackVelMsg_;
+        float vX_, wZ_;
+        float trackwidth_ = 1.08;
+
     };
 }
 

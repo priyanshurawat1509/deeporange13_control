@@ -1,7 +1,6 @@
 // A class to manage can msgs (parse and publish to can_tx/rx) using dbc file provided
 
 #include <deeporange13_control/DeepOrangeDbwCan.h>
-#include <deeporange13_control/dispatch_can_msgs.h>
 
 namespace deeporange_dbw_ros
 {
@@ -26,7 +25,6 @@ namespace deeporange_dbw_ros
 
         // Set up Timer
         // timer_ = node.createTimer(ros::Duration(1 / 20.0), &DeepOrangeDbwCan::publish_estop, this);
-
     }
 
     DeepOrangeDbwCan::~DeepOrangeDbwCan()
@@ -67,7 +65,12 @@ namespace deeporange_dbw_ros
 
     void DeepOrangeDbwCan::publishTrackVeltoCAN(const geometry_msgs::TwistStamped& msg)
     {
-        pub_can_.publish(estopMsg_);
+        NewEagle::DbcMessage* message = dbwDbc_.GetMessage("ROS_Control_msgs");
+
+        message->GetSignal("Left_TrackVel_Demand")->SetResult(msg.twist.linear.x);
+        frame_ = message->GetFrame();
+
+        pub_can_.publish(frame_);
     }
 
 

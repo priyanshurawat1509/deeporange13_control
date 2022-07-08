@@ -22,6 +22,9 @@
 #include <can_dbc_parser/DbcSignal.h>
 #include <can_dbc_parser/Dbc.h>
 #include <can_dbc_parser/DbcBuilder.h>
+// enumerations
+#include <deeporange13_control/dispatch_can_msgs.h>
+
 
 namespace deeporange_dbw_ros
 
@@ -56,6 +59,7 @@ namespace deeporange_dbw_ros
 
         // Frame ID
         std::string frameId_;
+        can_msgs::Frame frame_;
 
         // E-stop indicator variables
         long int estop_;
@@ -64,7 +68,7 @@ namespace deeporange_dbw_ros
 
         // dbc file variables
         NewEagle::Dbc dbwDbc_;
-        std::string dbcFile_;
+        std::string dbcFile_ = "/dbc/ROS_DO13.dbc";
 
         // Raptor Comms Variables
         int sysState_;

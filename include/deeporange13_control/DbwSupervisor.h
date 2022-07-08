@@ -15,6 +15,9 @@ between multiple functional objects like VehicleModel and DeepOrangeDbwCan
 #include <nav_msgs/Odometry.h>
 #include <deeporange13_msgs/RaptorState.h>
 #include <deeporange13_msgs/RosState.h>
+#include <deeporange13_msgs/TrackVelocity.h>
+
+#include <deeporange13_control/state_enums.h>
 
 namespace deeporange_dbw_ros
 {
@@ -25,8 +28,10 @@ namespace deeporange_dbw_ros
         ~DbwSupervisor();
 
         private:
-        void synchronise(const geometry_msgs::TwistStamped::ConstPtr& msg);
-        // void publish_estop(const ros::TimerEvent& event);
+        void getTrackVelocity(const geometry_msgs::TwistStamped::ConstPtr& msg);
+        void publishROSState(const ros::TimerEvent& event);
+        void getRaptorMsg(const deeporange13_msgs::RaptorState& msg);
+        void updateROSStateMsg();
         ros::Timer timer_;
 
         // Publishers
@@ -40,6 +45,10 @@ namespace deeporange_dbw_ros
         nav_msgs::Odometry odometryMsg_;
         deeporange13_msgs::RaptorState raptorMsg_;
         deeporange13_msgs::RosState rosSupMsg_;
+        deeporange13_msgs::TrackVelocity trackVelMsg_;
+
+        // Setting up internal semaphores:
+        bool is_raptorMsg_old_;
 
     };
 }
