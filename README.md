@@ -7,8 +7,3 @@
 - Run a ROS state machine in sync with the Raptor controller state machine.
 - Monitor health of sensors hardware and ROS connections to the on-board computer
 - Allow remote access? - TBD if this is inside the package.
-
-
-### Contributors:
- - Program Manager: Chris Paredis (paredis@clemson.edu)
- - Prakhar Gupta (prakhag@clemson.edu)
